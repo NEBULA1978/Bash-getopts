@@ -100,7 +100,7 @@ function apagarReiniciar(){
 # Main Function
 
 if [ "$(id -u)" == "0" ]; then
-	declare -i parameter_counter=0; while getopts ":anh:" arg; do
+	declare -i parameter_counter=0; while getopts ":ansvmwtucbeoh:" arg; do
 		case $arg in
 			a) mostrarDiscos; let parameter_counter+=1 ;;
 			n) mostrarDiscoActual; let parameter_counter+=1 ;;
@@ -132,7 +132,7 @@ if [ "$(id -u)" == "0" ]; then
 		mostrarInfoCPU
 		mostrarUltimoReinicio
 		mostrarTiempoUso
-		apagarReiniciar
+		# apagarReiniciar
 		tput cnorm; 
 	fi
 else
