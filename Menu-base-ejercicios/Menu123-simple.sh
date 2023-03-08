@@ -34,13 +34,19 @@ function mostrarDiscos(){
 	sudo fdisk -l
 
 }
+function Fibonacci(){
+	tput civis
+	./00_Fibonacci.sh
+
+}
 
 # Main Function
 
 if [ "$(id -u)" == "0" ]; then
-	declare -i parameter_counter=0; while getopts ":ah:" arg; do
+	declare -i parameter_counter=0; while getopts ":abh:" arg; do
 		case $arg in
 			a) mostrarDiscos; let parameter_counter+=1 ;;
+			b) Fibonacci; let parameter_counter+=1 ;;
 	
 			h) helpPanel;;
 		esac
