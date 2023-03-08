@@ -44,10 +44,74 @@ function mostrarDiscoActual(){
 }
  
  
- 
- 
- 
+ function mostrarSistemaOperativo(){
+	echo "Adios $mostrarSistemaOperativo"
 
+	echo "Información sobre el sistema operativo: "
+	uname -a
+}
+
+function mostrarVersionSistemaOperativo(){
+		echo "Adios $mostrarVersionSistemaOperativo"
+
+	echo "Versión del sistema operativo: "
+	lsb_release -a
+}
+
+function mostrarMemoriaRAM(){
+	echo "Adios $mostrarMemoriaRAM"
+
+	echo "Memoria RAM: "
+	grep MemTotal /proc/meminfo
+}
+
+function mostrarMemoriaSwap(){
+	echo "Adios $mostrarMemoriaSwap"
+
+	echo "Memoria swap: "
+	grep SwapTotal /proc/meminfo
+}
+
+function mostrarParticionesDiscos(){
+	echo "Particiones de discos: "
+	sudo fdisk -l
+}
+
+function mostrarMemoriaSwapRAM(){
+	echo "Datos sobre memoria RAM y swap usada y libre: "
+	free -h
+}
+
+function mostrarInfoCPU(){
+	echo "Información sobre la CPU: "
+	grep "model name" /proc/cpuinfo
+}
+
+function mostrarUltimoReinicio(){
+	echo "Información sobre el último reinicio del sistema: "
+	last reboot
+}
+
+function mostrarTiempoUso(){
+	echo "Tiempo de uso del sistema: "
+	uptime
+}
+
+function apagarReiniciar(){
+	echo "Introduce 0 para apagar el equipo o 6 para reiniciar el sistema: "
+	read opcion
+	if [ $opcion -eq 0 ]; then
+		echo "Apagando equipo..."
+		sudo shutdown -h now
+	elif [ $opcion -eq 6 ]; then
+		echo "Reiniciando sistema..."
+		sudo reboot
+	else
+		echo "Opción inválida"
+	fi
+ 
+ 
+ 
 # Main Function
 
 if [ "$(id -u)" == "0" ]; then
@@ -55,6 +119,18 @@ if [ "$(id -u)" == "0" ]; then
 		case $arg in
 			a) mostrarDiscos; let parameter_counter+=1 ;;
 			n) mostrarDiscoActual; let parameter_counter+=1 ;;
+
+			s) mostrarSistemaOperativo; let parameter_counter+=1 ;;
+			v) mostrarVersionSistemaOperativo; let parameter_counter+=1 ;;
+			m) mostrarMemoriaRAM; let parameter_counter+=1 ;;
+			w) mostrarMemoriaSwap; let parameter_counter+=1 ;;
+			t) mostrarParticionesDiscos; let parameter_counter+=1 ;;
+			u) mostrarMemoriaSwapRAM; let parameter_counter+=1 ;;
+			c) mostrarInfoCPU; let parameter_counter+=1 ;;
+			b) mostrarUltimoReinicio; let parameter_counter+=1 ;;
+			e) mostrarTiempoUso; let parameter_counter+=1 ;;
+			o) apagarReiniciar; let parameter_counter+=1 ;;
+
 			h) helpPanel;;
 		esac
 	done

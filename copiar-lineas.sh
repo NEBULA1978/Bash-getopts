@@ -1,6 +1,40 @@
-total_lines=$(wc -l < Menu12.sh)
-start_line=$((47 + total_lines))
-sed -i "${start_line}i\
-$(sed -n '36,40p' Menu2.sh)" Menu12.sh
+#!/bin/bash
 
-# Este comando primero determina el número total de líneas en el archivo Menu12.sh y lo guarda en la variable total_lines. Luego, calcula la línea de inicio agregando el número total de líneas a la línea 47. Finalmente, utiliza el comando sed para agregar las líneas 36 a 40 del archivo Menu2.sh después de la línea de inicio.
+# start_line=36
+# end_line=41
+
+# lines_to_copy=$(sed -n "${start_line},${end_line}p" Menu2.sh)
+
+# insert_line=45
+
+# sed -i "${insert_line}i\ ${lines_to_copy}" Menu12.sh
+
+# ERROR
+# next@next-System:~/Escritorio/Bash-getopts$ ./copiar-lineas.sh 
+# sed: -e expresión #1, carácter 133: orden desconocida: «u»
+
+
+
+
+
+# start_line=36
+# end_line=41
+
+# lines_to_copy=$(sed -n "${start_line},${end_line}p" Menu2.sh | sed 's/[\&\;\(\)\<\>\|\^\~\`\$\*\?\[\]\{\}\!\#\+\-\=\:\,\ ]/\\&/g')
+
+# insert_line=45
+
+# sed -i "${insert_line}i\ ${lines_to_copy}" Menu12.sh
+
+
+start_line=36
+end_line=41
+
+lines_to_copy=$(sed -n "${start_line},${end_line}p" Menu2.sh | sed 's/[\&\;\(\)\<\>\|\^\~\`\$\*\?\[\]\{\}\!\#\+\-\=\:\,\ ]/\\&/g')
+
+insert_line=45
+
+sed -i "${insert_line}i\ ${lines_to_copy}" Menu12.sh
+
+# ERROR
+# sed: -e expresión #1, carácter 60: Contenido de \{\} inválido
