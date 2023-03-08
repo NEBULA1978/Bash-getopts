@@ -23,51 +23,38 @@ function ctrl_c(){
 function helpPanel(){
 	echo -e "\n${yellowColour}[*]${endColour}${grayColour} Uso: ./Menu12.sh${endColour}"
 	echo -e "\n\t${purpleColour}a)${endColour}Introducir ./Menu12.sh -n  -a${yellowColour} ${endColour}"
-	echo -e "\t\t${redColour}{endColour}"
-	echo -e "\t\t${redColour}${endColour}"
+	
 
 	exit 0
 }
 
 function mostrarDiscos(){
 	tput civis
-  # echo "Hola $saludar"
 	echo "Particiones de discos: "
 	sudo fdisk -l
 
 }
 
 function mostrarDiscoActual(){
-  # echo "Adios $despedir"
 	echo "Datos sobre memoria RAM y swap usada y libre: "
 	free -h
 }
- 
- 
- function mostrarSistemaOperativo(){
-	echo "Adios $mostrarSistemaOperativo"
-
+function mostrarSistemaOperativo(){
 	echo "Información sobre el sistema operativo: "
 	uname -a
 }
 
 function mostrarVersionSistemaOperativo(){
-		echo "Adios $mostrarVersionSistemaOperativo"
-
 	echo "Versión del sistema operativo: "
 	lsb_release -a
 }
 
 function mostrarMemoriaRAM(){
-	echo "Adios $mostrarMemoriaRAM"
-
 	echo "Memoria RAM: "
 	grep MemTotal /proc/meminfo
 }
 
 function mostrarMemoriaSwap(){
-	echo "Adios $mostrarMemoriaSwap"
-
 	echo "Memoria swap: "
 	grep SwapTotal /proc/meminfo
 }
@@ -86,7 +73,6 @@ function mostrarInfoCPU(){
 	echo "Información sobre la CPU: "
 	grep "model name" /proc/cpuinfo
 }
-
 function mostrarUltimoReinicio(){
 	echo "Información sobre el último reinicio del sistema: "
 	last reboot
@@ -109,9 +95,8 @@ function apagarReiniciar(){
 	else
 		echo "Opción inválida"
 	fi
- 
- 
- 
+}
+
 # Main Function
 
 if [ "$(id -u)" == "0" ]; then
@@ -119,7 +104,6 @@ if [ "$(id -u)" == "0" ]; then
 		case $arg in
 			a) mostrarDiscos; let parameter_counter+=1 ;;
 			n) mostrarDiscoActual; let parameter_counter+=1 ;;
-
 			s) mostrarSistemaOperativo; let parameter_counter+=1 ;;
 			v) mostrarVersionSistemaOperativo; let parameter_counter+=1 ;;
 			m) mostrarMemoriaRAM; let parameter_counter+=1 ;;
@@ -130,7 +114,6 @@ if [ "$(id -u)" == "0" ]; then
 			b) mostrarUltimoReinicio; let parameter_counter+=1 ;;
 			e) mostrarTiempoUso; let parameter_counter+=1 ;;
 			o) apagarReiniciar; let parameter_counter+=1 ;;
-
 			h) helpPanel;;
 		esac
 	done
@@ -140,6 +123,16 @@ if [ "$(id -u)" == "0" ]; then
 	else
 		mostrarDiscos
 		mostrarDiscoActual
+		mostrarSistemaOperativo
+		mostrarVersionSistemaOperativo
+		mostrarMemoriaRAM
+		mostrarMemoriaSwap
+		mostrarParticionesDiscos
+		mostrarMemoriaSwapRAM
+		mostrarInfoCPU
+		mostrarUltimoReinicio
+		mostrarTiempoUso
+		apagarReiniciar
 		tput cnorm; 
 	fi
 else
