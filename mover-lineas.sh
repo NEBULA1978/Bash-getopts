@@ -17,4 +17,4 @@ do
   fi
 done
 
-# Este script lee cada línea en el archivo Menu12.sh desde la línea 47 hasta la línea 53. Si la línea actual no está vacía, entonces mueve cada línea hacia abajo hasta la línea 53.
+# Este script lee cada línea en el archivo Menu12.sh desde la línea 47 hasta la línea 53.Me borra lineas escriptas

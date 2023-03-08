@@ -1,0 +1,17 @@
+En la rama main
+Tu rama y 'origin/main' han divergido,
+y tienen 2 y 1 commits diferentes cada una respectivamente.
+  (usa "git pull" para fusionar la rama remota en la tuya)
+
+nada para hacer commit, el árbol de trabajo está limpio
+
+El mensaje "Tu rama y 'origin/main' han divergido, y tienen 2 y 1 commits diferentes cada una respectivamente" significa que tu rama local y la rama remota origin/main han evolucionado de manera independiente y ahora tienen diferencias.
+
+Puedes solucionar esto de varias maneras:
+
+    Fusión: puedes fusionar la rama remota origin/main con tu rama local utilizando el comando git merge origin/main. Esto combinará los cambios de la rama remota con los tuyos y resolverá las divergencias.
+
+    Reemplazo: puedes reemplazar tu rama local con la rama remota origin/main utilizando el comando git fetch origin main seguido de git reset --hard origin/main. Esto descartará todos tus cambios locales y los reemplazará con los cambios de la rama remota.
+
+Es importante tener una copia de seguridad de tus cambios antes de elegir cualquiera de estas opciones, en caso de que desees recuperarlos en el futuro.
+

@@ -1,6 +1,4 @@
-# #!/bin/bash
-
-
+#!/bin/bash
 
 #Colours
 greenColour="\e[0;32m\033[1m"
@@ -44,6 +42,11 @@ function mostrarDiscoActual(){
 	echo "Datos sobre memoria RAM y swap usada y libre: "
 	free -h
 }
+ 
+ 
+ 
+ 
+ 
 
 # Main Function
 
