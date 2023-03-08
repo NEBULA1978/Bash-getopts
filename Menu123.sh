@@ -76,7 +76,7 @@ if [ "$(id -u)" == "0" ]; then
 		esac
 	done
 
-	if [ $parameter_counter -eq 2 ]; then
+	if [ $parameter_counter -eq 0 ]; then
 		helpPanel
 	fi
 	tput cnorm; 
