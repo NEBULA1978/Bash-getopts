@@ -35,42 +35,13 @@ function mostrarDiscos(){
 
 }
 
-function mostrarUltimoReinicio(){
-	echo "Información sobre el último reinicio del sistema: "
-	last reboot
-}
-# ///////////////////////////
-
-function mostrarDiscoActual(){
-	echo "Datos sobre memoria RAM y swap usada y libre: "
-	free -h
-}
-function mostrarSistemaOperativo(){
-	echo "Información sobre el sistema operativo: "
-	uname -a
-}
-
-function mostrarVersionSistemaOperativo(){
-	echo "Versión del sistema operativo: "
-	lsb_release -a
-}
-
-function mostrarMemoriaRAM(){
-	echo "Memoria RAM: "
-	grep MemTotal /proc/meminfo
-}
-
 # Main Function
 
 if [ "$(id -u)" == "0" ]; then
-	declare -i parameter_counter=0; while getopts ":abcdejh:" arg; do
+	declare -i parameter_counter=0; while getopts ":ah:" arg; do
 		case $arg in
 			a) mostrarDiscos; let parameter_counter+=1 ;;
-			b) mostrarUltimoReinicio; let parameter_counter+=1 ;;
-			c) mostrarSistemaOperativo; let parameter_counter+=1 ;;
-			d) mostrarVersionSistemaOperativo; let parameter_counter+=1 ;;
-			e) mostrarMemoriaRA; let parameter_counter+=1 ;;
-			j) mostrarUltimoReinicio; let parameter_counter+=1 ;;
+	
 			h) helpPanel;;
 		esac
 	done
@@ -81,5 +52,6 @@ if [ "$(id -u)" == "0" ]; then
 	tput cnorm; 
 else
 	echo -e "\n${redColour}[*] No soy root${endColour}\n"
+	mostrarDiscos
 fi
 
