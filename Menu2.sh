@@ -103,6 +103,7 @@ function apagarReiniciar(){
 # Main Function
 
 if [ "$(id -u)" == "0" ]; then
+
 	declare -i parameter_counter=0; while getopts ":a:n:d:p:s:v:m:w:t:u:c:b:e:o:h:" arg; do
 		case $arg in
 			a) saludar=$OPTARG; let parameter_counter+=1 ;;
