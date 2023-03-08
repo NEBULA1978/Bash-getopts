@@ -49,7 +49,8 @@ function mostrarMemoriaSwapRAM(){
 # Main Function
 
 if [ "$(id -u)" == "0" ]; then
-	declare -i parameter_counter=0; while getopts ":a:n:h:" arg; do
+	# declare -i parameter_counter=0; while getopts ":a:n:h:" arg; do
+	declare -i parameter_counter=0; while getopts ":anh:" arg; do
 		case $arg in
 			a) mostrarParticionesDiscos=$OPTARG; let parameter_counter+=1 ;;
 			n) mostrarMemoriaSwapRAM=$OPTARG; let parameter_counter+=1 ;;
@@ -67,3 +68,13 @@ if [ "$(id -u)" == "0" ]; then
 else
 	echo -e "\n${redColour}[*] No soy root${endColour}\n"
 fi
+ 
+
+# declare -i parameter_counter=0; while getopts ":a:n:h:" arg; do
+# Para ejecutar en consola, me muestra la ejecucion de las dos funciones:
+#  ./Menu1.sh -a hola -n adios
+
+# declare -i parameter_counter=0; while getopts ":anh:" arg; do
+# Para ejecutar en consola, me muestra la ejecucion de las dos funciones:
+#  ./Menu1.sh -a -n
+
