@@ -52,6 +52,6 @@ if [ "$(id -u)" == "0" ]; then
 	tput cnorm; 
 else
 	echo -e "\n${redColour}[*] No soy root${endColour}\n"
-	mostrarDiscos
+	# mostrarDiscos
 fi
 
