@@ -21,9 +21,17 @@ function ctrl_c(){
 }
 
 function helpPanel(){
-	echo -e "\n${yellowColour}[*]${endColour}${grayColour} Uso: ./Menu12.sh${endColour}"
-	echo -e "\n\t${purpleColour}a)${endColour}Introducir ./Menu12.sh -a para mostrar las particiones de discos\n"
-	
+	echo -e "\n${yellowColour}[*]${endColour}${grayColour} Uso: ./Menu123-simple.sh -a${endColour}"
+	echo -e "\n\t${purpleColour}a)${endColour}mostrarDiscos"
+	echo -e "\n\t${purpleColour}b)${endColour}Fibonacci"
+	echo -e "\n\t${purpleColour}c)${endColour}SumaTamanioArchivos"
+	echo -e "\n\t${purpleColour}d)${endColour}InstalacionPrograma"
+	echo -e "\n\t${purpleColour}e)${endColour}ContarPaginasApache"
+	echo -e "\n\t${purpleColour}f)${endColour}CuentasSinShell"
+	echo -e "\n\t${purpleColour}g)${endColour}crear_archivo"
+	echo -e "\n\t${purpleColour}h)${endColour}cuenta_atras"
+	echo -e "\n\t${purpleColour}i)${endColour}direccion_ip"
+	echo -e "\n\t${purpleColour}h)${endColour}helpPanel"
 
 	exit 0
 }
@@ -40,14 +48,55 @@ function Fibonacci(){
 
 }
 
+SumaTamanioArchivos(){
+	tput civis
+	./01_SumaTamanioArchivos.sh
+}
+
+InstalacionPrograma(){
+	tput civis
+	./02_InstalacionPrograma.sh
+}
+
+ContarPaginasApache(){
+	tput civis
+	./03_ContarPaginasApache.sh
+}
+
+CuentasSinShell(){
+	tput civis
+	./04_CuentasSinShell.sh
+}
+
+crear_archivo(){
+	tput civis
+	./05_crear_archivo.sh
+}
+
+cuenta_atras(){
+	tput civis
+	./06_cuenta_atras.sh 56 89
+}
+
+direccion_ip(){
+	tput civis
+	./07_direccion_ip.sh
+}
+
 # Main Function
 
 if [ "$(id -u)" == "0" ]; then
-	declare -i parameter_counter=0; while getopts ":abh:" arg; do
+	declare -i parameter_counter=0; while getopts ":abcdefghih:" arg; do
 		case $arg in
 			a) mostrarDiscos; let parameter_counter+=1 ;;
 			b) Fibonacci; let parameter_counter+=1 ;;
-	
+			c) SumaTamanioArchivos; let parameter_counter+=1 ;;
+			d) InstalacionPrograma; let parameter_counter+=1 ;;
+			e) ContarPaginasApache; let parameter_counter+=1 ;;
+			f) CuentasSinShell; let parameter_counter+=1 ;;
+			g) crear_archivo; let parameter_counter+=1 ;;
+			h) cuenta_atras; let parameter_counter+=1 ;;
+			i) direccion_ip; let parameter_counter+=1 ;;
 			h) helpPanel;;
 		esac
 	done
