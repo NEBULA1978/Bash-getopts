@@ -18,21 +18,20 @@ trap ctrl_c INT
 
 function ctrl_c(){
 	echo -e "\n${yellowColour}[*]${endColour}${grayColour}Saliendo${endColour}"
-	tput cnorm; airmon-ng stop ${networkCard}mon > /dev/null 2>&1
-	rm Captura* 2>/dev/null
+	tput cnorm; 
 	exit 0
 }
 
 function helpPanel(){
-	echo -e "\n${yellowColour}[*]${endColour}${grayColour} Uso: ./Menu1.sh${endColour}"
-	echo -e "\n\t${purpleColour}a)${endColour}${yellowColour} ${endColour}"
+	echo -e "\n${yellowColour}[*]${endColour}${grayColour} Uso: ./Menu12.sh${endColour}"
+	echo -e "\n\t${purpleColour}a)${endColour}Introducir ./Menu12.sh -n  -a${yellowColour} ${endColour}"
 	echo -e "\t\t${redColour}{endColour}"
 	echo -e "\t\t${redColour}${endColour}"
 
 	exit 0
 }
 
-function mostrarParticionesDiscos(){
+function mostrarDiscos(){
 	tput civis
   # echo "Hola $saludar"
 	echo "Particiones de discos: "
@@ -40,7 +39,7 @@ function mostrarParticionesDiscos(){
 
 }
 
-function mostrarMemoriaSwapRAM(){
+function mostrarDiscoActual(){
   # echo "Adios $despedir"
 	echo "Datos sobre memoria RAM y swap usada y libre: "
 	free -h
@@ -51,8 +50,8 @@ function mostrarMemoriaSwapRAM(){
 if [ "$(id -u)" == "0" ]; then
 	declare -i parameter_counter=0; while getopts ":anh:" arg; do
 		case $arg in
-			a) mostrarParticionesDiscos; let parameter_counter+=1 ;;
-			n) mostrarMemoriaSwapRAM; let parameter_counter+=1 ;;
+			a) mostrarDiscos; let parameter_counter+=1 ;;
+			n) mostrarDiscoActual; let parameter_counter+=1 ;;
 			h) helpPanel;;
 		esac
 	done
@@ -60,8 +59,8 @@ if [ "$(id -u)" == "0" ]; then
 	if [ $parameter_counter -ne 2 ]; then
 		helpPanel
 	else
-		mostrarParticionesDiscos
-		mostrarMemoriaSwapRAM
+		mostrarDiscos
+		mostrarDiscoActual
 		tput cnorm; 
 	fi
 else
