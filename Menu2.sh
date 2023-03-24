@@ -141,8 +141,26 @@ if [ "$(id -u)" == "0" ]; then
 		mostrarUltimoReinicio
 		mostrarTiempoUso
 		apagarReiniciar
-		tput cnorm; 
+		tput cnorm;
 	fi
 else
 	echo -e "\n${redColour}[*] No soy root${endColour}\n"
 fi
+
+# Este código implementa un menú en un script de shell que muestra información sobre el sistema operativo y el hardware del equipo, y permite al usuario apagar o reiniciar el sistema.
+
+# El menú se presenta en la pantalla y ofrece varias opciones, identificadas por letras, para que el usuario pueda seleccionarlas y ver la información correspondiente. Las opciones disponibles son:
+
+#     m: muestra la memoria RAM del equipo.
+#     w: muestra la memoria swap del equipo.
+#     t: muestra las particiones de disco del equipo.
+#     u: muestra datos sobre la memoria RAM y swap usada y libre.
+#     c: muestra información sobre la CPU del equipo.
+#     b: muestra información sobre el último reinicio del sistema.
+#     e: muestra el tiempo de uso del sistema.
+#     o: apaga o reinicia el sistema.
+#     h: muestra la ayuda.
+
+# El menú también permite al usuario proporcionar ciertos parámetros opcionales mediante la opción de línea de comando -a, -n, -d, -p, -s, -v, -m, -w, -t, -u, -c, -b, -e, -o o -h, que llamarán a funciones específicas del script para mostrar información adicional.
+
+# En caso de que el script se ejecute sin ninguna opción, el menú mostrará todas las opciones disponibles y solicitará al usuario que seleccione una de ellas. Si se selecciona una opción que requiere permisos de root, el script verificará si se está ejecutando como root y, de lo contrario, emitirá un mensaje de error.
