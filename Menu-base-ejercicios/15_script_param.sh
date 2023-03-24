@@ -1,4 +1,4 @@
-# #/bin/bash
+#!/bin/bash
 
 # #“script_param.sh”: Considere que en el shell actual se dispone de la variable: VAR="nombre=valor1&edad=valor2&telefono=valor3" Escriba un shell-script que analice el valor de dicha variable y para cada uno de los parámetros extraiga su valor y lo imprima por pantalla. Por ejemplo, que la salida sea: Cadena analizada: nombre=valor1&edad=valor2&telefono=valor3
 # VAR="nombre=valor1&edad=valor2&telefono=valor3"
