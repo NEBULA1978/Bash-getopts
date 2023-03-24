@@ -21,8 +21,8 @@ function ctrl_c(){
 }
 
 function helpPanel(){
-	echo -e "\n${yellowColour}[*]${endColour}${grayColour} Uso: ./Menu12.sh${endColour}"
-	echo -e "\n\t${purpleColour}a)${endColour}Introducir ./Menu12.sh -n  -a${yellowColour} ${endColour}"
+	echo -e "\n${yellowColour}[*]${endColour}${grayColour} Uso: ./Menu1234.sh${endColour}"
+	echo -e "\n\t${purpleColour}a)${endColour}Introducir ./Menu1234.sh -n  -a${yellowColour} ${endColour}"
 	
 
 	exit 0
@@ -118,6 +118,7 @@ k) mostrarTiempoUso; let parameter_counter+=1 ;;
 l) apagarReiniciar; let parameter_counter+=1 ;;
 esac
 ;;
+m) echo "La opción ingresada es: $OPTARG"; let parameter_counter+=1 ;;
 h) helpPanel;;
 esac
 done
@@ -131,3 +132,9 @@ else
 
 echo -e "\n${redColour}[*] No soy root${endColour}\n"
 fi
+
+# Para ejecutar el programa
+# Introducimos de la a...l despues del nombre del script, para ejecutar una opcion con cada letra:
+# ./Menu1234.sh -n c
+# Información sobre el sistema operativo: 
+# Linux next-System 5.15.0-67-generic #74-Ubuntu SMP Wed Feb 22 14:14:39 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
